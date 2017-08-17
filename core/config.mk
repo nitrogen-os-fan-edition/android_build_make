@@ -295,7 +295,9 @@ include $(BUILD_SYSTEM)/envsetup.mk
 FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
 
 -include vendor/extra/BoardConfigExtra.mk
+ifneq ($(NITROGEN_BUILD),)
 include vendor/nitrogen/config/BoardConfigNitrogen.mk
+endif
 
 # General entries for project pathmap.  Any entries listed here should
 # be device and hardware independent.
@@ -1237,6 +1239,14 @@ dont_bother_goals := out \
     vbmetaimage-nodeps \
     product-graph dump-products
 
+ifneq ($(NITROGEN_BUILD),)
+ifneq ($(wildcard device/nitrogen/sepolicy/common/sepolicy.mk),)
+## We need to be sure the global selinux policies are included
+## last, to avoid accidental resetting by device configs
+$(eval include device/nitrogen/sepolicy/common/sepolicy.mk)
+endif
+endif
+
 ifeq ($(CALLED_FROM_SETUP),true)
 include $(BUILD_SYSTEM)/ninja_config.mk
 include $(BUILD_SYSTEM)/soong_config.mk
@@ -1253,5 +1263,8 @@ endif
 -include external/ltp/android/ltp_package_list.mk
 DEFAULT_DATA_OUT_MODULES := ltp $(ltp_packages) $(kselftest_modules)
 .KATI_READONLY := DEFAULT_DATA_OUT_MODULES
+
+# Include any vendor specific config.mk file
+-include vendor/*/build/core/config.mk
 
 include $(BUILD_SYSTEM)/dumpvar.mk
