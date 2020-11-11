@@ -250,3 +250,7 @@ org\.chromium\.arc\..*
 ###################################################
 # LiveDisplay
 vendor.lineage.livedisplay.*
+###################################################
+# QCOM WFD
+com\.qualcomm\.wfd
+com\.qualcomm\.wfd\..*
