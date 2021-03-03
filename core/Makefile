@@ -4967,7 +4967,7 @@ name := $(TARGET_PRODUCT)
 ifeq ($(TARGET_BUILD_TYPE),debug)
   name := $(name)_debug
 endif
-name := NOS-FE-$(TARGET_DEVICE)-$(shell date +"%Y%m%d")
+name := NOS-FE-$(TARGET_DEVICE)-$(shell date +"%Y%m%d-%H%M")
 
 INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
 INTERNAL_OTA_METADATA := $(PRODUCT_OUT)/ota_metadata
