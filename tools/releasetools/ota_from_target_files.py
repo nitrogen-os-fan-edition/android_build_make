@@ -926,16 +926,19 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   model = target_info.GetBuildProp("ro.product.model")
   build = target_info.GetBuildProp("ro.build.date")
 
-  script.Print("- Nitrogen Project ---------------------------");
-  script.Print("*  * *** *** **** **** **** *** *  *  **** ***");
-  script.Print("** *  *   *  *  * *  * *    *   ** *  *  * *");
-  script.Print("* **  *   *  **** *  * * ** *** * **  *  * ***");
-  script.Print("*  *  *   *  * *  *  * *  * *   *  *  *  *   *");
-  script.Print("*  * ***  *  * *  **** **** *** *  *  **** ***");
-  script.Print("- By xyyx ------------------- Android 11.0.0 -");
+  script.Print("- NOS Fan Edition Project ---------------------");
+  script.Print("#     # #######  #####          ####### #######");
+  script.Print("##    # #     # #     #         #       #");
+  script.Print("# #   # #     # #               #       #");
+  script.Print("#  #  # #     #  #####   #####  #####   #####");
+  script.Print("#   # # #     #       #         #       #");
+  script.Print("#    ## #     # #     #         #       #");
+  script.Print("#     # #######  #####          #       #######");
+  script.Print("- By bicet & ralf979--------- Android 11.0.0 --");
+  script.Print("-----------------------------------------------");
   script.Print(" Compiled: %s "%(build));
   script.Print(" For: %s   "%(model));
-  script.Print("----------------------------------------------");
+
 
 
   # All other partitions as well as the data wipe use 10% of the progress, and
